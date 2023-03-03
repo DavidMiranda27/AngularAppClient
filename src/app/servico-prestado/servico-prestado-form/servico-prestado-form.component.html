@@ -1,0 +1,94 @@
+<h1 class="mt-4">Serviço Prestado</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-bitem active">Novo</li>
+</ol>
+
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit()">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+        Serviço Prestado salvo com sucesso!
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+          {{erro}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Cliente:</label>
+          <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="servicoPrestado.idCliente">
+            <option value="">Selecione...</option>
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+              {{cliente.nome}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group"></div>
+        <label for="">Descrição:</label>
+        <input
+         type="text"
+         class="form-control"
+         [(ngModel)]="servicoPrestado.descricao"
+         name="descricao"
+         id="inputDescricao"
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group"></div>
+        <label for="">Data:</label>
+        <input
+         type="text"
+         class="form-control"
+         [(ngModel)]="servicoPrestado.data"
+         name="data"
+         id="inputData"
+        >
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group"></div>
+        <label for="">Preço:</label>
+        <input
+         type="text"
+         class="form-control"
+         [(ngModel)]="servicoPrestado.preco"
+         name="preco"
+         id="inputPreco"
+        >
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-save"></i>
+          Salvar
+        </button>
+
+        <button
+         type="button"
+         class="btn btn-danger ml-2"
+         routerLink="/servico-prestado-listagem"
+         >
+          <i class="fa fa-arrow-alt-circle-left"></i>
+          Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
